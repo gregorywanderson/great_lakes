@@ -1,0 +1,25 @@
+name: great_lakes
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.12
+  # Core scientific stack
+  - numpy
+  - pandas
+  - matplotlib
+  - xarray
+  # NetCDF backend for xarray (needed to read .nc files even though not imported directly)
+  - netCDF4
+  # Buoy data fetching/parsing
+  - requests
+  - lxml
+  - scipy
+  - seaborn
+  # GOES satellite imagery + mapping
+  - cartopy
+  - imageio
+  # goes2go is not on conda-forge; install it with pip into this env
+  - pip
+  - pip:
+      - goes2go
+      - windrose

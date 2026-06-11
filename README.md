@@ -35,10 +35,29 @@ GLERL via ERDDAP), and GOES-East satellite imagery.
 
 ## Getting started
 
+### Setup
+
+**Recommended (conda):** this installs cartopy and the NetCDF libraries cleanly,
+which is the easiest path on Windows.
+
 ```bash
-pip install pandas numpy matplotlib requests lxml xarray netCDF4 goes2go cartopy imageio
+conda env create -f environment.yml
+conda activate great_lakes
 ```
+
+**Alternative (pip):**
+
+```bash
+pip install -r requirements.txt
+```
+
+### Running the notebooks
 
 Open any notebook and run the cells top to bottom. Each notebook sets its case
 date, region, and parameters in a configuration cell near the top — change those
 to retarget it to a different event or area.
+
+New here? Start with `buoy.ipynb` — it begins by fetching and plotting buoy
+observations (a gentle introduction), then builds toward wind roses and
+statistical fits in later sections.
+

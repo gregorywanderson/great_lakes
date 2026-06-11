@@ -1,0 +1,21 @@
+# Core scientific stack
+numpy
+pandas
+matplotlib
+xarray
+
+# NetCDF backend for xarray (imported indirectly — xarray needs it to read .nc files)
+netCDF4
+
+# Buoy data fetching/parsing (ndbc_io.py)
+requests
+lxml
+# Wind rose plots and statistics (buoy.ipynb)
+windrose
+seaborn
+scipy
+
+# GOES satellite imagery + mapping (goes_cloud_animation.ipynb)
+goes2go
+cartopy
+imageio
