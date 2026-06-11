@@ -20,6 +20,10 @@ GLERL via ERDDAP), and GOES-East satellite imagery.
 - **`buoy.ipynb`** — Buoy diagnostics for southern Lake Michigan: wind, waves,
   and water-temperature drops associated with upwelling and lake breezes.
 
+- **`nexrad_pyart.ipynb`** —
+Fetching, parsing, and visualizing 
+NEXRAD Level 2 Doppler radar data from the KLOT (Chicago) station using the **Python ARM Radar Toolkit (Py-ART)**. 
+
 ## Supporting files
 
 - **`ndbc_io.py`** — Helper functions for fetching and parsing NDBC buoy text feeds.
