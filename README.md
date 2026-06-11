@@ -1,40 +1,44 @@
-# Great Lakes Environmental Data Analysis: Satellite and Buoy Data 
+# Great Lakes Environmental Data Analysis
 
-An open-source Python toolkit for programmatically fetching, processing, and visualizing meteorological and oceanographic data across the Great Lakes. This repository combines in-situ observations from the National Data Buoy Center (NDBC) API with high-resolution satellite gridded data from NOAA CoastWatch ERDDAP servers to analyze coastal upwelling events, lake breeze dynamics, surface water temperatures, wind, and waves.
+Python notebooks for fetching, processing, and visualizing satellite and buoy
+data over the Great Lakes, with a focus on southern Lake Michigan. The notebooks
+look at coastal upwelling, lake breezes, surface water temperature, and clouds —
+combining in-situ buoy observations (NDBC), gridded satellite SST (NOAA CoastWatch /
+GLERL via ERDDAP), and GOES-East satellite imagery.
 
-## Project Overview
+## Notebooks
 
-Analyzing complex coastal dynamics requires blending distinct environmental data streams. This project provides a localized, programmatic workflow that eliminates the need for manual, high-bandwidth data downloads by slicing and streaming data directly into memory.
+- **`gl_sst.ipynb`** — Surface water temperature from the GLSEA gridded product.
+  Builds ERDDAP requests, loads NetCDF into xarray, maps daily and averaged SST,
+  and animates day-to-day SST anomalies to spot upwelling events.
 
-The core analytical pipeline covers:
-* **In-Situ Buoy Diagnostics:** Automating real-time and historical data extraction from NDBC stations in southern Lake Michigan to track micro-climate indicators like wind stress and wave heights.
-* **Remote Data Slicing:** Building precise, dimension-aware REST queries for the NOAA Great Lakes Environmental Research Laboratory (GLERL) ERDDAP server.
-* **Multidimensional Data Ingestion:** Streaming NetCDF (`.nc`) grids straight into Xarray datasets without local manual file assembly.
-* **Coordinate Conversion:** Translating raw, numeric NetCDF time offsets into standard Python datetime objects for seamless downstream plotting.
-* **Geospatial Mapping:** Correcting unprojected Geographic Coordinate System (GCS) stretching with adaptive aspect ratios to accurately plot physical lake features.
+- **`goes_cloud_animation.ipynb`** — A configurable pipeline that downloads
+  GOES-East ABI imagery, renders each scan over a chosen region, and assembles
+  the frames into an animation. Used here to look for lake-breeze cloud signatures,
+  but the machinery works for any mesoscale cloud phenomenon.
 
-## Scientific Data Products
+- **`buoy.ipynb`** — Buoy diagnostics for southern Lake Michigan: wind, waves,
+  and water-temperature drops associated with upwelling and lake breezes.
 
-This analysis cross-references real-time station instrumentation with regional satellite environmental grids:
-* **NDBC Station Telemetry:** In-situ measurements capture high-frequency physical transitions (e.g., rapid water temperature drops indicating coastal upwelling or sharp wind direction shifts signaling a lake breeze).
-* **GLSEA (Great Lakes Surface Environmental Analysis):** A daily gridded map showing surface water temperature and ice cover of the Great Lakes, combining cloud-free satellite observations with a transition model.
-* **ACSPO (Advanced Clear-Sky Processor for Oceans):** The underlying NOAA processing algorithm that translates raw infrared data from polar-orbiting and geostationary satellites into highly accurate sea surface temperatures (SST).
-* **GCS (Geographic Coordinate System):** An unprojected, ellipsoidal grid layout utilizing decimal degrees (Latitude/Longitude) rather than a projected plane, allowing for rapid coordinate bounding and subsetting.
+## Supporting files
 
-## Core Repository Architecture
+- **`ndbc_io.py`** — Helper functions for fetching and parsing NDBC buoy text feeds.
+- **`images/`** — Saved figures and animations.
+- **`.gitignore`** — Ignores cached downloads and local NetCDF slices (`*.nc`).
 
-The workspace is organized into modular notebooks and data access scripts:
+## Data sources
 
-* `buoy.ipynb` — The primary analysis notebook focusing on southern Lake Michigan buoy dynamics, upwelling events, and wind/wave relationships.
-* `ndbc_io.py` — A dedicated utility module containing custom functions for fetching and parsing raw NDBC real-time and historical text streams.
-* `gl_sst.ipynb` — The secondary data access and visualization notebook detailing API integrations, spatial bounding box arrays, and interactive Xarray/ERDDAP dataset exploration.
-* `.gitignore` — Pre-configured to ignore local cache outputs, system variables, and local NetCDF binary slices (`*.nc`).
+- **GLSEA / ACSPO** — Daily gridded Great Lakes surface temperature (NOAA GLERL),
+  derived from polar-orbiting satellite infrared via the ACSPO algorithm.
+- **NDBC** — Real-time and historical buoy observations.
+- **GOES-East ABI** — Geostationary satellite imagery, accessed with `goes2go`.
 
-## Getting Started
-
-### Prerequisites
-
-This project relies on the standard Python scientific data ecosystem. Ensure you have the following third-party libraries installed:
+## Getting started
 
 ```bash
-pip install pandas numpy matplotlib requests lxml xarray netCDF4
+pip install pandas numpy matplotlib requests lxml xarray netCDF4 goes2go cartopy imageio
+```
+
+Open any notebook and run the cells top to bottom. Each notebook sets its case
+date, region, and parameters in a configuration cell near the top — change those
+to retarget it to a different event or area.
