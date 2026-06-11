@@ -8,12 +8,15 @@ events, lake breeze dynamics, wind and waves.
 
 - `buoy.ipynb` — main analysis notebook
 - `ndbc_io.py` — utilities for fetching NDBC realtime and historical data
+- `gl_sst.ipynb` — data access and visualization for SST on the Great Lakes
 
 ## Dependencies
 
 - pandas, numpy, matplotlib
-- requests, lxml
+- requests, lxml, xarray
 
 ## Data
 
 Buoy data is fetched directly from the NDBC API and is not stored in this repository.
+
+Great Lakes SST is fetched from the GLSEA via ERDDAP
