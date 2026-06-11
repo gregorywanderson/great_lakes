@@ -23,3 +23,6 @@ dependencies:
   - pip:
       - goes2go
       - windrose
+# NEXRAD radar visualization
+  - arm_pyart
+  - boto3

@@ -19,3 +19,7 @@ scipy
 goes2go
 cartopy
 imageio
+
+# NEXRAD radar visualization (nxrad_pyart.ipynb)
+arm_pyart
+boto3
