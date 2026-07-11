@@ -7,10 +7,6 @@ satellite remote sensing, Doppler weather radar, and geostationary
 satellite imagery** to investigate coastal upwelling, lake breezes,
 cloud formation, and other air--lake interactions.
 
-<p align="center">
-  <img src="figures/github/sst_and_anomaly.gif" width="900">
-</p>
-
 
 ------------------------------------------------------------------------
 
@@ -32,7 +28,7 @@ Analyze historical and real-time NDBC buoy observations using wind
 roses, wave statistics, and wind-speed distributions.
 
 <p align="center">
-  <img src="figures/github/three_wind_roses.png" width="900">
+  <img src="figures/github/three_windroses.png" width="900">
 </p>
 
 
@@ -43,7 +39,7 @@ thunderstorms, lake-breeze boundaries, and other mesoscale weather
 features.
 
 <p align="center">
-  <img src="figures/radar_KLOT_20250507_21UTC_reflectivity_anim.gif" width="900">
+  <img src="figures/github/radar_KLOT_20250507_21UTC_reflectivity_anim.gif" width="900">
 </p>
 
 ------------------------------------------------------------------------
